@@ -1,0 +1,20 @@
+version: "3.8"
+
+services:
+  api-gateway:
+    build: ./api-gateway
+    volumes:
+      - sidecar-volume:/app
+    ports:
+      - "3000:3000"
+
+  sidecar:
+    build: ./side-car
+    volumes:
+      - sidecar-volume:/app
+    depends_on:
+      - api-gateway
+    command: script.bash
+
+volumes:
+  sidecar-volume:
