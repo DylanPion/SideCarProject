@@ -14,7 +14,7 @@ services:
       - sidecar-volume:/app
     depends_on:
       - api-gateway
-    command: script.bash
+    command: /usr/local/bin/script.sh
 
 volumes:
   sidecar-volume:
